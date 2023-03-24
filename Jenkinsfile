@@ -3,7 +3,9 @@ pipeline{
     
     stages{
         stage{
-            git branch: "main", url: "https://github.com/vk2011/Passage.git", credentialsId: "git-credentials"
+            steps{
+                git branch: "main", url: "https://github.com/vk2011/Passage.git", credentialsId: "git-credentials"
+            }
         }
         stage{
             steps("build stage"){
