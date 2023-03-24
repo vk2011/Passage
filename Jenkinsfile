@@ -2,7 +2,7 @@ pipeline{
     agent any
     
     stages{
-        stage{
+        stage ("checkout"){
             steps{
                 git branch: "main", url: "https://github.com/vk2011/Passage.git", credentialsId: "git-credentials"
             }
