@@ -19,7 +19,7 @@ pipeline{
         stage ("deploy stage"){
             steps{
 
-                bat "docker-compoes -f docker-compose.yml -p passage up -d"
+                bat "docker-compose -f docker-compose.yml -p passage up -d"
             }
         }
     }
