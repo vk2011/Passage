@@ -8,7 +8,7 @@ RUN mkdir /passage-app/
 WORKDIR /passage-app/
 COPY ./src/ /passage-app/
 COPY ./requirements.txt /passage-app/requirements.txt 
-COPY ./.env .env
+# COPY ./.env .env
 
 
 RUN set -ex \
