@@ -5,13 +5,17 @@ pipeline{
         stage{
             git branch: "main", url: "https://github.com/vk2011/Passage.git", credentialsId: "git-credentials"
         }
-        stage("build stage"){
+        stage{
+            steps("build stage"){
 
-            sh "docker-compose -f docker-compose.yml -p passage build "
+                sh "docker-compose -f docker-compose.yml -p passage build "
+            }
         }
-        stage("deploy stage"){
+        stage{
+            steps("deploy stage"){
 
-            sh "docker-compoes -f docker-compose.yml -p passage up -d"
+                sh "docker-compoes -f docker-compose.yml -p passage up -d"
+            }
         }
     }
 }
