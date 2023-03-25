@@ -16,9 +16,10 @@ environ.Env.read_env(os.path.join(BASE_DIR.parent, ".env"), )
 
 DEBUG = env('DEBUG')
 
-SECRET_KEY = env.str('SECRET_KEY')
+SECRET_KEY = 'abcde'
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.str('ALLOWED_HOSTS').split(' ')
+print(ALLOWED_HOSTS)
 
 
 # Application definition
@@ -84,11 +85,18 @@ WSGI_APPLICATION = 'passage.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env.str("DATABASE_NAME"),
-        'USER': env.str("DATABASE_USER"),
-        'PASSWORD': env.str("DATABASE_PASSWORD"),
-        'HOST': env.str("DATABASE_HOST"),
-        'PORT': env("DATABASE_PORT"),
+        'NAME': 'postgresql',
+        'USER': 'postgres',
+        'PASSWORD': 'vedant@345',
+        'HOST': 'localhost',
+        'PORT': 5432,
+
+        # 'ENGINE': 'django.db.backends.postgresql',
+        # 'NAME': env.str("DATABASE_NAME"),
+        # 'USER': env.str("DATABASE_USER"),
+        # 'PASSWORD': env.str("DATABASE_PASSWORD"),
+        # 'HOST': env.str("DATABASE_HOST"),
+        # 'PORT': env("DATABASE_PORT"),
     }
 }
 

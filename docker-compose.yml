@@ -10,11 +10,19 @@ services:
       - passage-app-static:/passage-app/static
       - passage-app-media:/passage-app/media
     command: bash -c "python manage.py collectstatic --no-input && python manage.py migrate && gunicorn --workers=3 passage.wsgi -b 0.0.0.0:8000"
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
 
-  db:
-    image: postgres
+  # db:
+  #   image: postgres:latest
+  #   restart: always
+  #   environment:
+  #     POSTGRES_USER: myusername
+  #     POSTGRES_PASSWORD: mypassword
+  #   networks:
+  #     - hostnet
+  #   ports:
+  #     - '5432:5432'
 
   nginx:
     restart: always
@@ -49,3 +57,6 @@ services:
 volumes:
   passage-app-static:
   passage-app-media:
+
+# networks:
+#   hostnet:
