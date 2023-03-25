@@ -18,7 +18,7 @@ pipeline{
             }
         }
         stage ("deploy stage"){
-            environments{
+            environment{
                 FILE_ENV = credentials("passage-environment-variables")
             }
             steps{
