@@ -2,9 +2,7 @@ pipeline{
     agent any
     
     stages{
-        environment{
-            FILE_ENV = credentials("passage-environment-variables")
-        }
+        
         stage ("checkout"){
             steps{
                 git branch: "main", url: "https://github.com/vk2011/Passage.git", credentialsId: "git-credentials"
@@ -20,6 +18,9 @@ pipeline{
             }
         }
         stage ("deploy stage"){
+            environments{
+                FILE_ENV = credentials("passage-environment-variables")
+            }
             steps{
 
                 bat "docker-compose -f docker-compose.yml --env-file ${FILE_ENV} -p passage up -d"
