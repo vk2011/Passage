@@ -16,22 +16,22 @@ pipeline{
                     steps{
                         bat "docker --version"
                         bat "docker-compose --version"
-                        bat "docker-compose -f docker-compose.yml -p passage build app"
+                        bat "docker-compose -f docker-compose.yml --no-cache -p passage build app"
                     }
                 }
                 stage("build nginx"){
                     steps{
-                       bat "docker-compose -f docker-compose.yml -p passage build nginx"
+                       bat "docker-compose -f docker-compose.yml --no-cache -p passage build nginx"
                     }
                 }
                 stage("build redis"){
                     steps{
-                        bat "docker-compose -f docker-compose.yml -p passage build redis"
+                        bat "docker-compose -f docker-compose.yml --no-cache -p passage build redis"
                     }
                 }
                 stage("build celery"){
                     steps{
-                        bat "docker-compose -f docker-compose.yml -p passage build celery"
+                        bat "docker-compose -f docker-compose.yml --no-cache -p passage build celery"
                     }
                 }
             }
